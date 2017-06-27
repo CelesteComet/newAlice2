@@ -10,3 +10,9 @@ export const setWindowSize = () => {
   }
 }
 
+export const reset = () => {
+  return {
+    type: "RESET"
+  }
+}
+

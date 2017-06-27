@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Header from './header';
-import { toggleVisibility, setWindowSize } from '../actions/menu_actions';
+import { toggleVisibility, setWindowSize, reset } from '../actions/menu_actions';
 
 
 const mapStateToProps = (state) => {
@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setWindowSize: () => {
       dispatch(setWindowSize());
+    },
+    handleReset: () => {
+      dispatch(reset());
     }
   }
 }

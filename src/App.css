@@ -58,15 +58,17 @@ a:visited {
   display: none;
 }
 
-.pace .pace-progress {
+.pace-progress {
   background: #29d;
   position: fixed;
   z-index: 2000;
   top: 0;
   right: 100%;
   width: 100%;
-  height: 2px;
+  height: 5px;
 }
+
+
 
 /* HEADER */
 
@@ -129,6 +131,9 @@ nav {
   width: 100%;
   z-index: 5;
   overflow: hidden;
+  height: 0px;
+  transition: height 230ms ease-out;
+  -webkit-transform: translateZ(0);
 }
 
 nav li {
@@ -153,21 +158,25 @@ nav a {
 
 .nav-enter {
   height: 0px;
+  -webkit-transform: translateZ(0);
 }
 
-.nav-enter.nav-enter-active {
+.nav-enter-active {
   height: 81px;
   transition: all 230ms ease-in;
+  -webkit-transform: translateZ(0);
 }
 
 .nav-leave {
   height: 81px;
   transition: all 230ms ease-in;
+  -webkit-transform: translateZ(0);
 }
 
-.nav-leave.nav-leave-active {
+.nav-leave-active {
   height: 0;
   transition: all 230ms ease-in;
+  -webkit-transform: translateZ(0);
 }
 
 /* Jumbotron */
@@ -360,6 +369,10 @@ form {
 
 @media (min-width: 992px) {
 
+  .slider {
+    display: none;
+  }
+
   .valign {
     position: relative;
     top: 50%;
@@ -476,6 +489,8 @@ form {
   }
 
 
+
+
 }
 
 
@@ -496,7 +511,7 @@ form {
     font-size: 20px;
     position: fixed;
     width: 40px;
-    z-index: 99999;
+    z-index: 999;
     transform: rotate(0deg);
     transition: all 300ms ease-out;
     will-change: transform;
@@ -504,6 +519,12 @@ form {
 
   .turn-button {
     transform: rotate(-90deg);
+    transition: all 300ms ease-out;
+    will-change: transform;
+  }
+
+  .unturn-button {
+    transform: rotate(0deg);
     transition: all 300ms ease-out;
     will-change: transform;
   }
@@ -532,14 +553,12 @@ form {
   /* Slider */
 
   .slider {
-    right: 0;
+    right: 3000px;
     display: block;
     position: fixed;
     height: 100vh;
     width: 66.66vw;
     z-index: 9;
-    transform: translateX(-3000px);
-    transition: 1200ms ease-in 1400ms;
     background: url('./assets/images/menu.jpg');
     background-size: cover;
     background-position: center center;
@@ -615,12 +634,10 @@ form {
   .slider-img-container {
     height: 0px;
     overflow: hidden;
-    transition: all 500ms ease-out 700ms;
   }
 
   .show-slider-img {
     height: 60px;
-    transition: all 500ms ease-out 700ms;
   }
 
   /* Footer Desktop */
@@ -659,9 +676,29 @@ form {
     float: right;
   }
 
+
+
   /* CONTACT FORM DESKTOP 1200px */
 
+}
 
 
+.loader {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
+.cover {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1999;
+  background: white;
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import headerLogo from '../assets/images/headerLogo.png';
 import fbLogo from '../assets/images/fbLogo.svg';
 import $ from 'jquery';
@@ -14,7 +13,7 @@ class SliderNav extends Component {
 
   render() {
     return (
-        <div className='slider'>
+        <div className='slider closed'>
           <div className='slider-background'>
             <div className='slider-img-container'>
               <img src={headerLogo} alt="Core Cultural Management" />
@@ -24,9 +23,9 @@ class SliderNav extends Component {
             <div>
               <div>
                 <ul>
-                  <li><Link to="/" onClick={this.props.toggleMenu}>HOME</Link></li>
-                  <li><Link to="/about" onClick={this.props.toggleMenu}>ABOUT</Link></li>
-                  <li><Link to="/contact" onClick={this.props.toggleMenu}>CONTACT</Link></li>
+                  <li><a href="/" onClick={this.props.toggleMenu}>HOME</a></li>
+                  <li><a href="/about" onClick={this.props.toggleMenu}>ABOUT</a></li>
+                  <li><a href="/contact" onClick={this.props.toggleMenu}>CONTACT</a></li>
                 </ul>
               </div>
               <div className='copy-credits'>

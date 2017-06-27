@@ -10,6 +10,7 @@ import Footer from './components/footer';
 import Home from './components/home';
 import About from './components/about';
 import Contact from './components/contact';
+import Pace from './components/pace';
 
 import { Provider } from 'react-redux';
 import Store from './store/store';
@@ -25,7 +26,8 @@ class App extends Component {
       <Provider store={ Store }>
         <BrowserRouter>
           <div>
-            <HeaderContainer></HeaderContainer>
+            <Pace />
+            <HeaderContainer />
             <Route exact path='/' component={ Home }></Route>
             <Route exact path='/about' component={ About }></Route>
             <Route exact path='/contact' component={ Contact }></Route>

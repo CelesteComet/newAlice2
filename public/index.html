@@ -10,6 +10,11 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+      crossorigin="anonymous"></script>
+    <script type="text/javascript" src="%PUBLIC_URL%/pace.js"></script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -22,6 +27,12 @@
     <title>React App</title>
   </head>
   <body>
+    <script type="text/javascript">
+      Pace.on('done', function() {
+        $('.cover').hide();
+
+      });
+    </script>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>

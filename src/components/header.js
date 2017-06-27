@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import TransitionGroup from 'react-addons-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import SliderNav from './slider-nav';
 import HeaderLogo from '../assets/images/headerLogo.png';
-import { Link } from 'react-router-dom';
 import $ from 'jquery';
 
 class Header extends Component {
@@ -12,27 +11,54 @@ class Header extends Component {
   }
 
   componentDidMount() {
+
+
     window.addEventListener('resize', this.props.setWindowSize);
+
+    // menu event listener
+    $('.collapse-button').on('click', function() {
+      
+      if( $('.slider').hasClass('closed') ) {
+
+        $('nav').addClass('nav-enter-active');
+        $('.desktop').addClass('turn-button');
+        $('.slider').removeClass('closed');
+        $('.slider').stop().animate({
+          right: "0px"
+        }, 1500, function() {
+          $('.slider-img-container').animate({
+            height: "81px"
+          }, 1000)
+        })
+      } else {
+        $('.desktop').removeClass('turn-button');
+        $('nav').removeClass('nav-enter-active');
+        $('.slider').addClass('closed');
+        $('.slider-img-container').animate({
+          height: "0px"
+        }, 1000, function() {
+          $('.slider').stop().animate({
+            right: "3000px"
+          }, 1500)
+        })
+      }
+
+    })
+  }
+
+  componentDidUpdate() {
+    if(this.props.state.menu.desktop) {
+      $('nav').hide();
+      $('.slider').show();
+    } else {
+      $('nav').show();
+      $('.slider').hide();
+    }
   }
 
   handleMenuClick() {
     this.props.toggleVisibility();
   }
-
-  componentDidUpdate() {
-    if(this.props.state.menu.isVisible) {
-      $('.desktop').addClass('turn-button');
-      $('.slider').addClass('slider-in');
-      $('.slider-img-container').addClass('show-slider-img');
-    } else {
-      $('.desktop').removeClass('turn-button');
-      $('.slider').removeClass('slider-in');
-      $('.slider-img-container').removeClass('show-slider-img');
-    }
-
-  }
-
-
 
   render() {
       
@@ -45,7 +71,7 @@ class Header extends Component {
             <div>
               <div className='header-text'>MENU</div>
               <div className='header-logo'><img src={HeaderLogo} /></div>
-              <div className='collapse-button' onClick={this.props.toggleVisibility}>
+              <div className='collapse-button' onClick={this.handleMenuClick }>
                 <span className='icon-bar'></span>
                 <span className='icon-bar'></span> 
                 <span className='icon-bar'></span>                   
@@ -57,21 +83,17 @@ class Header extends Component {
               </div>
             </div>
           </header>
-          {menuState.isVisible && !menuState.desktop && 
             <div>
               <nav>
                 <ul>
-                  <li onClick={this.handleMenuClick}><Link to='/'>Home</Link></li>
-                  <li onClick={this.handleMenuClick}><Link to='/about'>About</Link></li>
-                  <li onClick={this.handleMenuClick}><Link to='/contact'>Contact</Link></li>
+                  <li onClick={this.handleMenuClickReset}><a href='/'>Home</a></li>
+                  <li onClick={this.handleMenuClickReset}><a href='/about'>About</a></li>
+                  <li onClick={this.handleMenuClickReset}><a href='/contact'>Contact</a></li>
                 </ul>
               </nav>
             </div>
-          }
-          {menuState.isVisible && menuState.desktop &&
-            <SliderNav toggleMenu={this.handleMenuClick}/>
-          }
-        </div>
+              <SliderNav toggleMenu={this.handleMenuClickReset}/>
+            </div>
       );
   }
 }
