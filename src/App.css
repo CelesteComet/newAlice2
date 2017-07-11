@@ -235,6 +235,7 @@ footer img:nth-child(3) {
   background-position: center;
   background-attachment: fixed;
   padding: 10% 10%;
+  box-sizing: border-box;
 }
 
 .Parallax.woody {

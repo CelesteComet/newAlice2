@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import headerLogo from '../assets/images/headerLogo.png';
 import fbLogo from '../assets/images/fbLogo.svg';
 import $ from 'jquery';
@@ -16,7 +17,9 @@ class SliderNav extends Component {
         <div className='slider closed'>
           <div className='slider-background'>
             <div className='slider-img-container'>
-              <img src={headerLogo} alt="Core Cultural Management" />
+              <a href="/">
+                <img src={headerLogo} alt="Core Cultural Management" />
+              </a>
             </div>
           </div>
           <div className='slider-menu'>
@@ -29,7 +32,9 @@ class SliderNav extends Component {
                 </ul>
               </div>
               <div className='copy-credits'>
-                <img className='footer-logo' src={fbLogo} alt='Facebook' />
+                <a href="https://www.facebook.com/419535081556467">
+                  <img className='footer-logo' src={fbLogo} alt='Facebook' />
+                </a>
               </div>
             </div>
           </div>

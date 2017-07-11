@@ -11,14 +11,18 @@ class Footer extends Component {
     return (
       <footer>
         <div>
-          <img className='footer-logo' src={fbLogo} alt='Facebook' />
+          <a href="https://www.facebook.com/419535081556467">
+            <img className='footer-logo' src={fbLogo} alt='Facebook' />
+          </a>
           <div className='footer-set'>
             <p>
               大果文化顧問
               <br />
               Core Cultural Management
             </p>
-            <img className='footer-logo' src={ccLogo} alt='Core Cultural' />
+            <a href="https://www.facebook.com/419535081556467">
+              <img className='footer-logo' src={ccLogo} alt='Core Cultural' />
+            </a>
           </div>
         </div>
       </footer>
